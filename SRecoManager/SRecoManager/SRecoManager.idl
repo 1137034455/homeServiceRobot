@@ -1,0 +1,62 @@
+// SRecoManager.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 产生类型库(SRecoManager.tlb)，该类型库将成为
+// SRecoManager.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(C67F3774-376F-46D8-A6D7-3F6275D56837), version(1.0),
+  control ]
+library SRecoManagerLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CSRecoManagerCtrl 的主调度接口
+	[ 
+		uuid(E06F5A13-E5B4-47BB-A6AA-2C34C4F52091)	
+	]
+	dispinterface _DSRecoManager
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			[id(1)] BSTR GetSRecoResult(void);			
+			[id(2)] void Speak(BSTR strSpeak);
+			[id(3)] void WriteOrderToXML(BSTR path_Yufaku, BSTR str_Order);
+			//[id(4)] void InitSRecoManager(void);
+			[id(4)] LONG InitSRManager(BSTR path_Yufaku);
+			[id(5)] void LoadSRGrammar(void);
+			[id(6)] void Test(void);
+	};
+
+	//  CSRecoManagerCtrl 的事件调度接口
+
+	[ 
+		uuid(489CD01C-3062-4B02-9C30-7E1395407B7F)	
+	]
+	dispinterface _DSRecoManagerEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+			//[id(1)] void SRecoEvent(void);
+			[id(1)] void SREvent(void);
+			//[id(2)] void SRecoEvent(void);
+			[id(2)] void SRecognizeEvent(void);
+	};
+
+	//  CSRecoManagerCtrl 的类信息
+	[
+		uuid(E6A83528-143B-4C33-B7ED-53C63911CCCF)
+	]
+	coclass SRecoManager
+	{
+		[default] dispinterface _DSRecoManager;
+		[default, source] dispinterface _DSRecoManagerEvents;
+	};
+
+};

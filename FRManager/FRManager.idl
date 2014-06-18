@@ -1,0 +1,58 @@
+// FRManager.idl : ActiveX 控件项目的类型库源。
+
+// 此文件将由 MIDL 编译器工具处理以
+// 产生类型库(FRManager.tlb)，该类型库将成为
+// FRManager.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(427C99FE-B836-4964-B161-9490DFAB75C7), version(1.0),
+  control ]
+library FRManagerLib
+{
+	importlib(STDOLE_TLB);
+
+	//  CFRManagerCtrl 的主调度接口
+	[ 
+		uuid(B986E496-A112-4057-82AD-E6B83888BF05)	
+	]
+	dispinterface _DFRManager
+	{
+		properties:
+		methods:
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+			//[id(1)] void OpenCamera(void);
+			[id(2)] void TrainPerson(BSTR personName);
+			[id(3)] void AddPerson(BSTR personName);
+			[id(4)] BSTR Recognize(void);
+			[id(5)] LONG OpenCamera(void);
+			[id(6)] void InitFRManager(BSTR classifierPath);
+			[id(7)] void InitFRManager2(BSTR classifierPath, BSTR RecordPath);
+	};
+
+	//  CFRManagerCtrl 的事件调度接口
+
+	[ 
+		uuid(398C975D-5DAA-4AFA-9B46-43ADDA5C3031)	
+	]
+	dispinterface _DFRManagerEvents
+	{
+		properties:
+			//  事件接口没有任何属性
+
+		methods:
+	};
+
+	//  CFRManagerCtrl 的类信息
+	[
+		uuid(5D2BC97D-04DE-453B-95CB-E5DA90288754)
+	]
+	coclass FRManager
+	{
+		[default] dispinterface _DFRManager;
+		[default, source] dispinterface _DFRManagerEvents;
+	};
+
+};
