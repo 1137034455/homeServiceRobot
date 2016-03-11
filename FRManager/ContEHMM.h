@@ -13,7 +13,7 @@
 #include "legacy.hpp "
 #include "CvvImage.h"
 
-class CContEHMM  
+class CContEHMM
 {
 public:
 	BOOL Release();
