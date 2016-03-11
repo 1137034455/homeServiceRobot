@@ -34,7 +34,6 @@
 
 ## 程序界面展示
 
-
-![](http://7xoi5h.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE20160311174438.jpg)
+![](http://7xoi5h.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE20160311180544.jpg)
 
 ![](http://7xoi5h.com1.z0.glb.clouddn.com/%E6%88%AA%E5%9B%BE20160311174404.png)
