@@ -10,6 +10,9 @@ using System.Collections;
 
 namespace HSRobot
 {
+    /// <summary>
+    /// 用于管理数据库的类
+    /// </summary>
     class DBManager
     {
         private OleDbConnection dbconn; //数据库连接

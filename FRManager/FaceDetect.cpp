@@ -3,7 +3,6 @@
 //////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "UseSelf.h"
 #include "FaceDetect.h"
 
 #ifdef _DEBUG

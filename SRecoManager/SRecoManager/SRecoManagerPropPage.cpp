@@ -11,8 +11,6 @@
 
 IMPLEMENT_DYNCREATE(CSRecoManagerPropPage, COlePropertyPage)
 
-
-
 // œ˚œ¢”≥…‰
 
 BEGIN_MESSAGE_MAP(CSRecoManagerPropPage, COlePropertyPage)

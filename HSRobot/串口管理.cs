@@ -9,6 +9,9 @@ using System.Runtime.InteropServices;
 
 namespace HSRobot
 {
+    /// <summary>
+    /// 此类实现对串口功能的统一管理
+    /// </summary>
     public class 串口管理
     {
         [DllImport("advapi32.dll", CharSet = CharSet.Ansi, SetLastError = true, ExactSpelling = true)]
@@ -22,8 +25,9 @@ namespace HSRobot
             ref int lpcbValueName, int lpReserved, int lpType, [MarshalAs(UnmanagedType.VBByRefStr)] ref string lpData, ref int lpcbData);
 
         private ArrayList m_listPorts=new ArrayList();
+
         /// <summary>
-        /// 获取当前计算机的串口名称数组
+        /// 获取当前连接到计算机的所有串口
         /// </summary>
         /// <returns></returns>
         public static string[] GetSerialPortNames()

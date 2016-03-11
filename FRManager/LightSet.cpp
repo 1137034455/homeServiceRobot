@@ -11,6 +11,37 @@ CLightSet::~CLightSet(void)
 {
 }
 
+/// <summary>
+///光照归一化处理
+///1.转换色彩空间到HSV空间；
+///2.把HSV空间的V值设置为固定的值IlluminationThreshold；
+///3.再从HSV空间转换到RGB空间；
+/// </summary>
+void CLightSet::LightNormalization(IplImage* src, IplImage* dst, int threshold){
+	ASSERT(src->nChannels==3);
+	//转换色彩空间
+	cvCvtColor(src,dst,CV_RGB2HSV);
+	//分离通道
+	IplImage* imgChannel[3] = { 0, 0, 0 };  
+
+	for (int i=0;i<dst->nChannels;i++)
+	{
+		imgChannel[i] = cvCreateImage(cvGetSize( dst ), IPL_DEPTH_8U, 1);  //要求单通道图像才能直方图均衡化  
+	}
+
+	cvSplit(dst, imgChannel[0], imgChannel[1], imgChannel[2],0);//HSVA  
+
+	CvScalar avg=cvAvg(imgChannel[2]);
+	cvCvtScale(imgChannel[2],imgChannel[2],1.0,threshold-avg.val[0]);
+	cvMerge( imgChannel[0], imgChannel[1], imgChannel[2], 0, src );  		
+
+	cvCvtColor(dst,dst,CV_HSV2RGB);
+
+	for (int i=0;i<dst->nChannels;i++)
+	{
+		cvReleaseImage(&imgChannel[i] ); 
+	}
+}
 void CLightSet::RunLightPrep(IplImage* src,IplImage* dest)
 {
 	int M,N;
@@ -46,7 +77,7 @@ void CLightSet::RunLightPrep(IplImage* src,IplImage* dest)
 	srcshift = cvCloneImage(src);
 	cvShiftDFT(srcshift,srcshift);
 
-	IplImage *log,*temp;
+	IplImage *log, *temp;
 	log = cvCreateImage(cvGetSize(src),IPL_DEPTH_32F,1);
 	temp = cvCreateImage(cvGetSize(src),IPL_DEPTH_32F,1);
 

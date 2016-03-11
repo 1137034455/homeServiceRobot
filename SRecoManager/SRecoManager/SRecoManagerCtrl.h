@@ -6,7 +6,8 @@
 // CSRecoManagerCtrl : 有关实现的信息，请参阅 SRecoManagerCtrl.cpp。
 #define WM_TINGDATA WM_USER+1265
 #define SpeechSDK
-#include "CSelfUse.h"
+#include "SRCore.h"
+#include "XMLFileMan.h"
 #include "SpeechRecognition.h"
 
 class CSRecoManagerCtrl : public COleControl
@@ -61,7 +62,7 @@ private:
 	CString m_pathYufaku;
 	CString m_TingData;
 	CTTS m_TTS;
-	JIANTING* info;
+	MONITOR_STRUCT* info;
 protected:
 	BSTR GetSRecoResult(void);	
 
@@ -79,5 +80,8 @@ protected:
 	LONG InitSRManager(LPCTSTR path_Yufaku);
 	void LoadSRGrammar(void);
 	void Test(void);
+
+private:
+	CString getModulePath(void);
 };
 

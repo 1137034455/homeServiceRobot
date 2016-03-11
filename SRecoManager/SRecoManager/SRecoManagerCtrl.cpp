@@ -248,6 +248,16 @@ void CSRecoManagerCtrl::WriteOrderToXML(LPCTSTR path_Yufaku, LPCTSTR str_Order)
 	WriteXML(path_Yufaku,str_Order);
 }
 
+CString CSRecoManagerCtrl::getModulePath(){
+		CString module_path;
+		char module[MAXLEN];
+		::GetModuleFileName(AfxGetInstanceHandle(),module,MAXLEN);
+		module_path=module;
+		char a='\\';
+		module_path=module_path.Left(module_path.ReverseFind(a));
+		return module_path;
+}
+
 LONG CSRecoManagerCtrl::InitSRManager(LPCTSTR path_Yufaku)
 {
 	AFX_MANAGE_STATE(AfxGetStaticModuleState());
@@ -260,17 +270,12 @@ LONG CSRecoManagerCtrl::InitSRManager(LPCTSTR path_Yufaku)
 			return 0;
 		}
 
-// 		CString module_path;
-// 		char module[MAXLEN];
-// 		::GetModuleFileName(AfxGetInstanceHandle(),module,MAXLEN);
-// 		module_path=module;
-// 		char a='\\';
-// 		module_path=module_path.Left(module_path.ReverseFind(a));
-// 
+		//获取当前的路径
+// 		CString module_path=getModulePath();
 // 		m_pathYufaku=module_path+"\\action.xml";
 
 		m_pathYufaku=path_Yufaku;
-		info=new JIANTING;
+		info=new MONITOR_STRUCT;
 		info->hWnd=m_hWnd;
 		info->yufaku=m_pathYufaku;
 		info->Msg=WM_TINGDATA;

@@ -13,7 +13,6 @@ extern CComModule _Module;
 
 #define WM_SREVENT   WM_USER+102
 
-
 #if !defined(AFX_SPEECHRECOGNITION_H__72AB0E74_B869_45F1_B354_C20F8D1EEE72__INCLUDED_)
 #define AFX_SPEECHRECOGNITION_H__72AB0E74_B869_45F1_B354_C20F8D1EEE72__INCLUDED_
 
@@ -42,51 +41,32 @@ public:
 
 	HRESULT VoiceTraining(HWND hWndParent);
 	
-	
-	
 	// microphone setup
 	
 	HRESULT MicrophoneSetup(HWND hWndParent);
-	
-	
 	
 	// token list
 	
 	HRESULT InitTokenList(HWND hWnd, BOOL bIsComboBox = FALSE);
 	
-	
-	
 	// error string
 	
 	CString GetErrorString()
-		
 	{
-		
 		return m_sError;
-		
 	}
-	
-	
-	
+
 	// interface
 	
 	CComPtr<ISpRecognizer> m_cpRecoEngine;  // SR engine
-	
 	CComPtr<ISpRecoContext> m_cpRecoCtxt;   //Recognition contextfor dictation
-	
 	CComPtr<ISpRecoGrammar> m_cpDictationGrammar;  // Dictation grammar 
-
-	CComPtr<ISpVoice>m_cpVoice;
-	
-	
+	CComPtr<ISpVoice> m_cpVoice;
 	
 private:
 	
 	CString m_sError;
     BOOL    m_bOnDictation;
-
-
-
 };
 
 #endif // !defined(AFX_SPEECHRECOGNITION_H__72AB0E74_B869_45F1_B354_C20F8D1EEE72__INCLUDED_)

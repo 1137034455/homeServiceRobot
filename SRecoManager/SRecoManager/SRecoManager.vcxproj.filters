@@ -62,16 +62,13 @@
     <ClInclude Include="SRecoManagerPropPage.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CSelfUse.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TouFile.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="UseSelf.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="SpeechRecognition.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SRCore.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="XMLFileMan.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

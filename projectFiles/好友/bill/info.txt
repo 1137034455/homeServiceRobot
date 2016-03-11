@@ -1,10 +1,11 @@
 PERSONAL INFO
-bill
+Bill
 
-bill0.bmp
-bill1.bmp
-bill2.bmp
-bill3.bmp
-bill4.bmp
-bill5.bmp
-bill6.bmp
+Bill0.bmp
+Bill1.bmp
+Bill2.bmp
+Bill3.bmp
+Bill4.bmp
+Bill5.bmp
+Bill6.bmp
+Bill7.bmp

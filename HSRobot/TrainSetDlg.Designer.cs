@@ -81,7 +81,7 @@
             this.sdfToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(99, 26);
-            this.contextMenuStrip1.Text = "家庭服务机器人";
+            this.contextMenuStrip1.Text = MainForm.m_formText;
             // 
             // sdfToolStripMenuItem
             // 

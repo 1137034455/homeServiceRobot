@@ -46,6 +46,81 @@ public:
 #endif
 protected:
    IplImage*  m_img;
+
 };
+
+CV_INLINE RECT NormalizeRect( RECT r )
+{
+	int t;
+	if( r.left > r.right )
+	{
+		t = r.left;
+		r.left = r.right;
+		r.right = t;
+	}
+	if( r.top > r.bottom )
+	{
+		t = r.top;
+		r.top = r.bottom;
+		r.bottom = t;
+	}
+
+	return r;
+}
+
+CV_INLINE CvRect RectToCvRect( RECT sr )
+{
+	sr = NormalizeRect( sr );
+	return cvRect( sr.left, sr.top, sr.right - sr.left, sr.bottom - sr.top );
+}
+
+CV_INLINE RECT CvRectToRect( CvRect sr )
+{
+	RECT dr;
+	dr.left = sr.x;
+	dr.top = sr.y;
+	dr.right = sr.x + sr.width;
+	dr.bottom = sr.y + sr.height;
+
+	return dr;
+}
+
+CV_INLINE IplROI RectToROI( RECT r )
+{
+	IplROI roi;
+	r = NormalizeRect( r );
+	roi.xOffset = r.left;
+	roi.yOffset = r.top;
+	roi.width = r.right - r.left;
+	roi.height = r.bottom - r.top;
+	roi.coi = 0;
+
+	return roi;
+}
+CV_INLINE void FillBitmapInfo( BITMAPINFO* bmi, int width, int height, int bpp, int origin )
+{
+	assert( bmi && width >= 0 && height >= 0 && (bpp == 8 || bpp == 24 || bpp == 32));
+
+	BITMAPINFOHEADER* bmih = &(bmi->bmiHeader);
+
+	memset( bmih, 0, sizeof(*bmih));
+	bmih->biSize = sizeof(BITMAPINFOHEADER);
+	bmih->biWidth = width;
+	bmih->biHeight = origin ? abs(height) : -abs(height);
+	bmih->biPlanes = 1;
+	bmih->biBitCount = (unsigned short)bpp;
+	bmih->biCompression = BI_RGB;
+	if( bpp == 8 )
+	{
+		RGBQUAD* palette = bmi->bmiColors;
+		int i;
+		for( i = 0; i < 256; i++ )
+		{
+			palette[i].rgbBlue = palette[i].rgbGreen = palette[i].rgbRed = (BYTE)i;
+			palette[i].rgbReserved = 0;
+		}
+	}
+}
+
 typedef CvvImage CImage2;
 #endif

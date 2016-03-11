@@ -7,7 +7,9 @@ using System.Messaging;
 
 namespace HSRobot
 {
-    
+    /// <summary>
+    /// 用于向指定的窗口发送信号
+    /// </summary>
     public class SendMsg
     {
         //声明 API 函数 
@@ -39,7 +41,7 @@ namespace HSRobot
             SendMessage(WINDOW_HANDLER, m_Msg, IntPtr.Zero, IntPtr.Zero);
 
         }
-
+        //向指定窗体发送数据
         public void SendStringToOtherForm(string info)
         {
             int WINDOW_HANDLER = FindWindow(null, m_windowName);

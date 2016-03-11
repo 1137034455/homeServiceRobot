@@ -54,6 +54,12 @@
     <ClCompile Include="LightSet.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PersonImage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -86,16 +92,16 @@
     <ClInclude Include="CvvImage.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="CSelfUse.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="TouFile.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="UseSelf.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="LightSet.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PersonImage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSet.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -44,11 +44,13 @@
     <TargetExt>.ocx</TargetExt>
     <IncludePath>C:\Program Files\Microsoft Speech SDK 5.1\Include\VS2010;C:\Program Files\OpenCV\opencv\build\include\opencv2\legacy;C:\Program Files\OpenCV\opencv\include\opencv;C:\Program Files\OpenCV\opencv\include\opencv2;C:\Program Files\OpenCV\opencv\include;C:\Program Files\OpenCV\opencv\build\include;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSdkDir)include;$(FrameworkSDKDir)\include</IncludePath>
     <LibraryPath>C:\Program Files\Microsoft Speech SDK 5.1\Lib\i386;C:\Program Files\OpenCV\opencv\build\x86\vc10\lib;$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib</LibraryPath>
+    <OutDir>..\projectFiles\Activex控件</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.ocx</TargetExt>
     <LibraryPath>C:\Program Files\Microsoft Visual Studio 10.0\VC\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>..\projectFiles\Activex控件</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -126,14 +128,18 @@
     <ClCompile Include="FRManagerCtrl.cpp" />
     <ClCompile Include="FRManagerPropPage.cpp" />
     <ClCompile Include="LightSet.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PersonImage.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseSet.h" />
     <ClInclude Include="ContEHMM.h" />
-    <ClInclude Include="CSelfUse.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="PersonImage.h" />
     <ClInclude Include="CvvImage.h" />
     <ClInclude Include="FaceBase.h" />
     <ClInclude Include="FaceDetect.h" />
@@ -144,8 +150,6 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TouFile.h" />
-    <ClInclude Include="UseSelf.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="FRManager.rc" />

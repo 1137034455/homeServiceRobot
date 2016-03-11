@@ -323,16 +323,9 @@ void CFRManagerCtrl::ShowImageOnClient(HDC pDC, IplImage* image, CRect rect,CRec
 			cvPutText(image_show, info , cvPoint(0,20*(i+1)), &font, CV_RGB(255,0,0));
 		}		
 		
-// 		CvScalar avg=cvAvg(image);	
-// 		memset(info,'\0',100);
-// 		sprintf(info,"%f",avg.val[0]);
-// 		CvFont font;
-// 		cvInitFont( &font,CV_FONT_HERSHEY_PLAIN,1, 1, 0, 1, 8);
-// 		cvPutText(image_show, info , cvPoint(0,20), &font, CV_RGB(255,0,0));
 
-		/*cvCvtScale(image,image,1.0,100-avg.val[0]);*/
 		CvScalar avg=cvAvg(imgChannel[2]);
-		cvCvtScale(imgChannel[2],imgChannel[2],1.0,YUZHI-avg.val[0]);
+		cvCvtScale(imgChannel[2],imgChannel[2],1.0,IlluminationThreshold-avg.val[0]);
 		cvMerge( imgChannel[0], imgChannel[1], imgChannel[2], 0, image );  
 		for (int i=0;i<image->nChannels;i++)
 		{
@@ -601,11 +594,7 @@ BSTR CFRManagerCtrl::Recognize(void)
 	CString strResult;
 
 	// TODO: 在此添加调度处理程序代码
-// 	CClientDC pDC(this);
-// 	CRect rect;
-// 
-// 	GetWindowRect(rect);
-// 	ScreenToClient(rect);
+
 	if (m_dc==NULL)
 	{
 		m_dc=(CClientDC*)GetDC();
@@ -616,29 +605,26 @@ BSTR CFRManagerCtrl::Recognize(void)
 	}
 
 	CRect ROI;
-	if (flag_OpenCamera)
-	{
-		KillTimer(1);
-		draw_frame=cvCloneImage(frame);
-		faceDetect.DetectAndDrawFaces(frame,&ROI,draw_frame);
-
-// 		GetCenterRect(rect,draw_frame,&rect);
-// 		ShowImageOnClient(pDC.m_hDC,draw_frame,rect);
-		m_cvvImage.CopyOf(draw_frame);
-		m_cvvImage.DrawToHDC(m_pPicCtlHdc,m_pPicCtlRect);
-	}
-	else
+	if (!flag_OpenCamera)
 	{
 		MessageBox("请打开摄像头！");
 		return NULL;
 	}
 
+	//先暂时关闭Timer，处理人脸数据
+	KillTimer(1);
+	draw_frame=cvCloneImage(frame);
+	faceDetect.DetectAndDrawFaces(frame,&ROI,draw_frame);
+
+	m_cvvImage.CopyOf(draw_frame);
+	m_cvvImage.DrawToHDC(m_pPicCtlHdc,m_pPicCtlRect);
 	if (ROI.IsRectEmpty())
 	{
 		MessageBox("请把脸对正！");
 		SetTimer(1,40,NULL);
 		return NULL;
 	}
+	//当画面中有超过一个的红色方框时表示可能检测到两张或者多张人脸
 	// 	if (faceDetect.num_face!=1)
 	// 	{
 	// 		MessageBox("识别无效！保证画面中只有一个红色的方框！");
@@ -660,11 +646,9 @@ BSTR CFRManagerCtrl::Recognize(void)
 
 	float  fLike = -1;
 	int nIndex = -1;
-	int result = facebase.RecognizePerson( image,ROI, 
-		fLike,nIndex );
+	int result = facebase.RecognizePerson( image, ROI, fLike, nIndex);
 	if( result == NO_PERSON ) 
 	{
-		//facebase.TrainAll( TRAIN_UNTRAINED );
 		MessageBox("机器人还不认识任何好友！请先对机器人进行训练！");
 	}
 	else if (result==SOMEONE_NOT_TRAINED)

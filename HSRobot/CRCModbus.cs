@@ -4,6 +4,9 @@ using System.Text;
 
 namespace CRC
 {
+    /// <summary>
+    /// CRC循环冗余校验码：用于检验通过串口传输的数据的正确性和完整性。
+    /// </summary>
     public class CRCModbus
     {
         public byte[] crc_table=new byte[512];

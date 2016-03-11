@@ -40,11 +40,7 @@ namespace HSRobot
             m_faceBase.GetNameList(out name_list);
             FillImageList();
             GetRectImageList();
-            SetPicLayout();
-//             this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);//以下三行消除主界面闪烁             
-//             this.SetStyle(ControlStyles.DoubleBuffer, true);             
-//             this.SetStyle(ControlStyles.UserPaint, true);
-        
+            SetPicLayout();  
         }
 
         private void FillImageList()
@@ -129,10 +125,6 @@ namespace HSRobot
             }
             
             h_label.Location = new Point(25 , g_pictureSize_S + j*150+150);
-//             Point point = button_Ok.Location;
-//             Size size = button_Ok.Size;
-//             button_Ok.Location = new Point(width - 2 * 20 - 2 * size.Width, g_pictureSize_S + j * 150 + 150);
-//             button_Cancle.Location = new Point(width - 1 * 20 - 1 * size.Width, g_pictureSize_S + j * 150 + 150);
             this.Controls.Add(h_label);
         }
         //在每张图片下面添加姓名
@@ -228,11 +220,6 @@ namespace HSRobot
                         {                            
                             if (!pictureBox.flag_MouseMove)
                             {
-                                
-//                                 imageList.ImageSize = new Size(g_pictureSize_L, g_pictureSize_L);
-//                                 imageList.Images.Add(m_imageList.Images[index]);
-//                                 pictureBox.Image = imageList.Images[0];
-
                                 pictureBox.Left -= 10;
                                 pictureBox.Size = new Size(g_pictureSize_L, g_pictureSize_L);
                                 pictureBoxSize = pictureBox.Size;
@@ -283,10 +270,6 @@ namespace HSRobot
                         {                           
                             if (!pictureBox.flag_MouseMove)
                             {
-//                                 imageList.ImageSize = new Size(g_pictureSize_S, g_pictureSize_S);
-//                                 imageList.Images.Add(m_imageList.Images[index]);
-//                                 pictureBox.Image = imageList.Images[0];
-
                                 pictureBox.Left += 10;
                                 pictureBox.Size = new Size(g_pictureSize_S, g_pictureSize_S);
                             }
@@ -307,10 +290,6 @@ namespace HSRobot
                         }
                         else
                         {
-//                             imageList.ImageSize = new Size(g_pictureSize_S, g_pictureSize_S);
-//                             imageList.Images.Add(m_imageList.Images[index]);
-//                             pictureBox.Image = imageList.Images[0];
-
                             if (!pictureBox.flag_MouseMove)
                             {
                                 pictureBox.Left += 10;
@@ -410,7 +389,7 @@ namespace HSRobot
 //             if(result == System.Windows.Forms.DialogResult.Yes)
 //             {
                 selectedPerson = this.label_selectName.Text;
-                SendMsg msg = new SendMsg(WM_CLOSETRAINSETDLG,"家庭服务机器人");
+                SendMsg msg = new SendMsg(WM_CLOSETRAINSETDLG, MainForm.m_formText);
                 msg.SendStringToOtherForm(selectedPerson);
                 this.Close();
             /*}*/
@@ -420,9 +399,6 @@ namespace HSRobot
         {
             string newPersonPicPath = m_faceBase.m_rootPath + newPersonName + "\\" + newPersonName + "0.bmp";
             Image image = Image.FromFile(newPersonPicPath);
-//             ImageList imageList = new ImageList();
-//             imageList.ImageSize = new Size(100, 100);
-//             imageList.Images.Add(image);
             m_imageList.Images.Add(image);
 
             PictureBoxLZ pictureBox = new PictureBoxLZ();

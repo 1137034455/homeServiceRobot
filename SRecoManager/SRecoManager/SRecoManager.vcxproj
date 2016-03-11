@@ -42,10 +42,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetExt>.ocx</TargetExt>
+    <OutDir>..\..\projectFiles\Activex控件</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetExt>.ocx</TargetExt>
+    <OutDir>..\..\projectFiles\Activex控件</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,16 +124,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CSelfUse.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SpeechRecognition.h" />
+    <ClInclude Include="SRCore.h" />
     <ClInclude Include="SRecoManager.h" />
     <ClInclude Include="SRecoManagerCtrl.h" />
     <ClInclude Include="SRecoManagerPropPage.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TouFile.h" />
-    <ClInclude Include="UseSelf.h" />
+    <ClInclude Include="XMLFileMan.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SRecoManager.rc" />

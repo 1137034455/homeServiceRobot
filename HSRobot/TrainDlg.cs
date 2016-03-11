@@ -216,16 +216,10 @@ namespace HSRobot
                     Size pictureBoxSize = new Size(g_pictureSize_L, g_pictureSize_L);
                     pictureBox.Invoke(new EventHandler(delegate
                     {
-
                         if (!pictureBox.flag_Clicked)
                         {
                             if (!pictureBox.flag_MouseMove)
                             {
-
-//                                 imageList.ImageSize = new Size(g_pictureSize_L, g_pictureSize_L);
-//                                 imageList.Images.Add(m_imageList.Images[index]);
-//                                 pictureBox.Image = m_imageList.Images[index];
-
                                 pictureBox.Left -= 10;
                                 pictureBox.Size = new Size(g_pictureSize_L, g_pictureSize_L);
                                 pictureBoxSize = pictureBox.Size;
@@ -264,10 +258,6 @@ namespace HSRobot
                         {
                             if (!pictureBox.flag_MouseMove)
                             {
-//                                 imageList.ImageSize = new Size(g_pictureSize_S, g_pictureSize_S);
-//                                 imageList.Images.Add(m_imageList.Images[index]);
-//                                 pictureBox.Image = imageList.Images[0];
-
                                 pictureBox.Left += 10;
                                 pictureBox.Size = new Size(g_pictureSize_S, g_pictureSize_S);
                             }
@@ -288,9 +278,6 @@ namespace HSRobot
                         }
                         else
                         {
-//                             imageList.ImageSize = new Size(g_pictureSize_S, g_pictureSize_S);
-//                             imageList.Images.Add(m_imageList.Images[index]);
-//                             pictureBox.Image = imageList.Images[0];
 
                             if (!pictureBox.flag_MouseMove)
                             {
@@ -335,18 +322,12 @@ namespace HSRobot
         private void button_back_Click(object sender, EventArgs e)
         {
             //SendMessage
-            SendMsg msg = new SendMsg(WM_CLOSETRAINDLG,"家庭服务机器人");
+            SendMsg msg = new SendMsg(WM_CLOSETRAINDLG,MainForm.m_formText);
             msg.SendMsgToOtherForm();
         }
 
         private void 窗口大小变化(object sender, EventArgs e)
         {
-//             int minWidth = this.label1.Location.X + this.label1.Width + 20;
-//             if (this.Size.Width < minWidth)
-//             {
-//                 this.Size = new Size((int)minWidth, this.Size.Height);
-//             }
-
             SetPicLayout();
         }
 
@@ -357,9 +338,6 @@ namespace HSRobot
                 return;
             }
             Image image = Image.FromFile(newPicPath);
-//             ImageList imageList = new ImageList();
-//             imageList.ImageSize = new Size(100,100);
-//             imageList.Images.Add(image);
             m_imageList.Images.Add(image);
             PictureBoxLZ pictureBox = new PictureBoxLZ();
             pictureBox.SizeMode = PictureBoxSizeMode.Zoom;

@@ -41,18 +41,17 @@
 //
 //////////////////////////////////////////////////////////////////////
 
-#if !defined(AFX_FACEBASE_H__76CC3F61_D0C7_4CF8_8479_84950282D632__INCLUDED_)
-#define AFX_FACEBASE_H__76CC3F61_D0C7_4CF8_8479_84950282D632__INCLUDED_
-
-#if _MSC_VER > 1000
 #pragma once
-#endif // _MSC_VER > 1000
-#define YUZHI 80
+
 #include "cv.h"
 #include "highgui.h"
 #include "ContEHMM.h"  
 #include "CvvImage.h"
+#include "Person.h"
+#include "PersonImage.h"
+#include "BaseSet.h"
 #include "LightSet.h"
+
 #define CImage2 CvvImage
 
 #define TRAIN_ALL 1
@@ -62,12 +61,10 @@
 #define SOMEONE_NOT_TRAINED -1
 #define ALL_TRAINED 1
 
-class CPersonImage;
+#define IlluminationThreshold 80		//光照强度归一化的值
+
 class CPerson;
-class CFaceBase;
-          
-typedef  CList<CPersonImage*,CPersonImage*> CPersonImgList;
-typedef  CList<CPerson*,CPerson*> CPersonList;
+class CPersonImage;
 
 class CFaceBase  
 {
@@ -145,94 +142,9 @@ protected:
     int      m_trained_index;
     CImage2   m_trained_image;
     CWnd*    m_base_view;
-
+	CLightSet m_light;
     bool     GetPersonFolder( const char* root_folder, int root_folder_len,
                               const char* person_folder, char* folder );
     void     GetPersonSubFolder( const char* folder, char* subfolder );
     void     GetRootFolder( char* root_folder, int* root_path_len );
 };
-
-
-class CPerson  
-{
-public:
-	void ClearHMM();
-	CContEHMM& GetHMM();
-	CPerson( CFaceBase* parent );
-    virtual ~CPerson();
-
-	int      GetActiveFace() { return m_nActiveFace; };
-
-    void     SetName( const CString& name );
-    const    CString& GetName() { return m_name; }
-    void     SetFolder( const CString& folder );
-    void     GenerateFileName( const char* base, char* filename );
-    const    CString& GetFolder() { return m_folder; }
-    int      AddImage( const char* filename, CImage2* import_image, CRect roi );
-    void     RemoveImage( POSITION pos );
-    bool     Load();
-    void     Unload();
-    bool     Save();
-    void     LoadRest();
-    void     UnloadRest();
-    CPersonImgList& GetImgList() { return m_imgs; }
-    void     SetModified( bool modified = true )
-    {
-        m_modified = modified;
-        if( modified )
-            m_trained = false;
-    }
-    bool     IsModified() { return m_modified; }
-    CFaceBase*  GetParentBase() { return m_parent; }
-    void     TrainHMM();
-    bool     IsTrained() { return m_trained; };
-    void     DeleteHMMInfo();
-
-protected:
-	int      m_nActiveFace;
-    CString  m_name;
-    CString  m_folder;
-    CPersonImgList  m_imgs;
-    CContEHMM m_hmm;
-    CFaceBase* m_parent;
-
-    bool     m_trained;
-    bool     m_modified;
-    bool     GetPersonFullImageName( const char* root, int root_len,
-                                   const char* image, char* full_image_name );
-    void     ExtractPersonImageName( const char* full_image_name, char* image );
-	void Hist(IplImage* src,IplImage* dst);
-};
-
-class CPersonImage
-{
-public:
-    
-    CPersonImage();
-    virtual ~CPersonImage();
-    bool     Save();
-    bool     Load();
-    void     Unload();
-    void     SetFileName( const CString& filename );
-    void     SetRoiInFile( CRect r );
-    CRect    GetRoiInFile() { return m_roi_in_file; }
-    const CString& GetFileName() { return m_filename; }
-    void     SetModified( bool modified = true ) { m_modified = modified; }
-    bool     IsModified() { return m_modified; }
-    void     CalcRect( SIZE win_size, POINT pos, SIZE base_size,
-                       CRect& src_rect, CRect& dst_rect );
-    void     Draw( CImage2& img, SIZE win_size, POINT pos, SIZE pic_size );
-    CImage2&  GetImage() { return m_img; }
-
-protected:
-    CString  m_filename;
-    CImage2   m_img;
-    CRect    m_roi_in_file;
-    bool     m_modified;
-public:
-	CImage2 m_saveImg;
-};
-
-void ConvertNameToFolder( const char* name, char* folder );
-
-#endif // !defined(AFX_FACEBASE_H__76CC3F61_D0C7_4CF8_8479_84950282D632__INCLUDED_)

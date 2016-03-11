@@ -8,6 +8,11 @@ namespace HSRobot
 {
     public class ArrayListLZ: ArrayList
     {
+        /// <summary>
+        /// 根据索引获得object
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public object GetObject(int index)
         {
             object t_obj = new object();

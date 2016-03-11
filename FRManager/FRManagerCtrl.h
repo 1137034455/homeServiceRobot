@@ -10,7 +10,7 @@
 #include "vector"
 #include "FaceDetect.h "
 #define SpeechSDK
-#include "CSelfUse.h"
+// #include "CSelfUse.h"
 
 
 // #include <mmsystem.h>

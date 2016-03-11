@@ -1,0 +1,17 @@
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\projectFiles\bin\HSRobot.exe.config
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\projectFiles\bin\HSRobot.exe
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\projectFiles\bin\HSRobot.pdb
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\Interop.FRManagerLib.dll
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\Interop.SRecoManagerLib.dll
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\AxInterop.FRManagerLib.dll
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\AxInterop.SRecoManagerLib.dll
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.csproj.ResolveComReference.cache
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.AddPersonDlg.resources
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.MainForm.resources
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.Properties.Resources.resources
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.SendDataDlg.resources
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.TrainDlg.resources
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.TrainSetDlg.resources
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.csproj.GenerateResource.Cache
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.exe
+C:\Users\lesshst\Desktop\projects\homeServiceRobot\HSRobot\obj\x86\Release\HSRobot.pdb

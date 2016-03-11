@@ -12,6 +12,9 @@ using CRC;
 
 namespace HSRobot
 {
+    /// <summary>
+    /// 此窗口主要实现的功能为：向下位机发送各种控制数据实现对下位机的控制。
+    /// </summary>
     public partial class SendDataDlg : Form
     {
         //private const int WM_RECEIVEWRONGDATA = 0x297A;
@@ -40,13 +43,8 @@ namespace HSRobot
         public SendDataDlg(串口管理 SPManager)
         {
             InitializeComponent();
-            m_SPManager = SPManager;            
+            m_SPManager = SPManager; 
         }
-
-//         private void button1_Click(object sender, EventArgs e)
-//         {
-//             
-//         }
 
         private void SendDataDlg_Load(object sender, EventArgs e)
         {
@@ -405,7 +403,7 @@ namespace HSRobot
         {
             switch (msg.Msg)
             {
-                case Form1.WM_RECEIVEWRONGDATA:
+                case MainForm.WM_RECEIVEWRONGDATA:
                     m_SPManager.发送数据(m_namePort, m_dataSend, m_length_dataSend);
                     break;
                 default:
